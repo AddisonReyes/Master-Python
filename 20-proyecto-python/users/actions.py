@@ -1,3 +1,4 @@
+import notes.actions as notes
 import users.user as model
 
 
@@ -36,6 +37,7 @@ class Actions():
 
             if email == login[3]:
                 print(f"\nBienvenido \n{login[1]}, te has registrado en el sistema el {login[5]}")
+                self.nextActions(login)
             
             else:
                 print("\nNo te has logueado correctamente!!!")
@@ -44,3 +46,38 @@ class Actions():
             print(f"\nLogin incorrecto!! Intentalo mas tarde")
             # print(type(e).__name__)
             # print(type(e))
+    
+    def nextActions(self, login: list):
+        print("""
+Acciones disponibles:
+    - Crear nota (crear)
+    - Mostrar tus notas (mostrar)
+    - Eliminar nota (eliminar)
+    - Salir (salir)
+        """)
+
+        action = input("¿Que deseas hacer? ")
+        noteActions = notes.Actions()
+
+        match action:
+            case 'crear':
+                print("\nVamos a crear")
+                noteActions.create(user=login)
+
+            case 'mostrar':
+                print("\nVamos a mostrar")
+                noteActions.view(user=login)
+
+            case 'eliminar':
+                print("\nVamos a eliminar")
+                noteActions.delete(user=login)
+
+            case 'salir':
+                print(f"\nOk {login[1]}, hasta pronto!!!")
+                exit()
+
+            case _:
+                pass
+
+        print(f"\n\n{login}\n\n")
+        self.nextActions(login)
