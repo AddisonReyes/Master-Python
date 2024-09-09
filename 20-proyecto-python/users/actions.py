@@ -79,5 +79,5 @@ Acciones disponibles:
             case _:
                 pass
 
-        print(f"\n\n{login}\n\n")
+        # print(f"\n\n{login}\n\n")
         self.nextActions(login)
