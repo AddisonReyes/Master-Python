@@ -22,9 +22,10 @@ class Programa:
         self.size = size
         self.resizable = resizable
 
-    def cargar(self):
+    def cargar(self) -> None:
         # Crear la ventana raiz
         ventana = Tk()
+        self.ventana = ventana
 
         # Titulo de la ventana
         ventana.title(self.title)
@@ -51,13 +52,21 @@ class Programa:
         else:
             ventana.resizable(0, 0)
 
+    def addText(self, texto: str = "Hola desde un metodo") -> None:
+        texto = Label(self.ventana, text=texto)
+        texto.pack()
+
+    def mostrar(self) -> None:
         # Arrancar y mostrar la ventana hasta que se cierre
-        ventana.mainloop()
+        self.ventana.mainloop()
 
 
 def main():
-    prog = Programa()
-    prog.cargar()
+    programa = Programa()
+    programa.cargar()
+    programa.addText(texto="bla bla bla bla ")
+    programa.addText()
+    programa.mostrar()
 
 
 if __name__ == "__main__":
