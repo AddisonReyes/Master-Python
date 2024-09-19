@@ -8,8 +8,8 @@ def main() -> None:
     # ventana.geometry("700x400")
     ventana.resizable(0, 0)
 
-    w: float = 100
-    h: float = 100
+    w: float = 250
+    h: float = 250
 
     marco_padre0 = Frame(ventana, width=w, height=h)
     marco_padre0.config(bg="white")
@@ -18,6 +18,25 @@ def main() -> None:
     marco = Frame(marco_padre0, width=w, height=h)
     marco.config(bg="red", bd=12, relief="raised")
     marco.pack(side=LEFT, anchor=NW)
+    marco.pack_propagate(False)
+
+    texto = Label(marco, text="Primer marco")
+    texto.config(
+        bg="red",
+        fg="white",
+        font=("Arial", 20),
+        anchor=CENTER,
+        height=2,
+        width=10,
+        border=3,
+        relief=RAISED,
+    )
+    texto.pack(
+        side=BOTTOM,
+        anchor=CENTER,
+        fill=X,
+        expand=YES,
+    )
 
     marco = Frame(marco_padre0, width=w, height=h)
     marco.config(bg="green", bd=12, relief="raised")

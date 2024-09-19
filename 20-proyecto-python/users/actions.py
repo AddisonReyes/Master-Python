@@ -2,7 +2,7 @@ import notes.actions as notes
 import users.user as model
 
 
-class Actions():
+class Actions:
 
     def __init__(self) -> None:
         pass
@@ -15,15 +15,18 @@ class Actions():
         email: str = input("Introduce tu email: ")
         password: str = input("Introduce tu contraseña: ")
 
-        new_user = model.User(name=name, last_name=last_name, email=email, password=password)
+        new_user = model.User(
+            name=name, last_name=last_name, email=email, password=password
+        )
         record = new_user.register()
 
         if record[0] >= 1:
-            print(f"\nPerfecto {record[1].name} te has registrado con el email \'{record[1].email}\'")
-        
+            print(
+                f"\nPerfecto {record[1].name} te has registrado con el email '{record[1].email}'"
+            )
+
         else:
             print("\nNo te has registrado correctamente!!!")
-
 
     def login(self) -> None:
         print("\nVale!! Identificate en el sistema...")
@@ -36,43 +39,47 @@ class Actions():
             login = new_user.identify()
 
             if email == login[3]:
-                print(f"\nBienvenido \n{login[1]}, te has registrado en el sistema el {login[5]}")
+                print(
+                    f"\nBienvenido \n{login[1]}, te has registrado en el sistema el {login[5]}"
+                )
                 self.nextActions(login)
-            
+
             else:
                 print("\nNo te has logueado correctamente!!!")
-        
+
         except Exception as e:
             print(f"\nLogin incorrecto!! Intentalo mas tarde")
             # print(type(e).__name__)
             # print(type(e))
-    
+
     def nextActions(self, login: list):
-        print("""
+        print(
+            """
 Acciones disponibles:
     - Crear nota (crear)
     - Mostrar tus notas (mostrar)
     - Eliminar nota (eliminar)
     - Salir (salir)
-        """)
+        """
+        )
 
         action = input("¿Que deseas hacer? ")
         noteActions = notes.Actions()
 
         match action:
-            case 'crear':
+            case "crear":
                 print("\nVamos a crear")
                 noteActions.create(user=login)
 
-            case 'mostrar':
+            case "mostrar":
                 print("\nVamos a mostrar")
                 noteActions.view(user=login)
 
-            case 'eliminar':
+            case "eliminar":
                 print("\nVamos a eliminar")
                 noteActions.delete(user=login)
 
-            case 'salir':
+            case "salir":
                 print(f"\nOk {login[1]}, hasta pronto!!!")
                 exit()
 
