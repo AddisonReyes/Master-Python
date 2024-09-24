@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Mi pagina web</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <!-- Encabezado -->
+    <h1>Home</h1>
+
+    <!-- Menu -->
+    <ul>
+        <li><a href="index.html" title="Inicio">Inicio</a></li>
+        <li><a href="contenidos.html" title="Contenidos">Contenidos</a></li>
+        <li><a href="contacto.html" title="Contenidos">Contacto</a></li>
+        <li><a href="repaso.html" title="Repaso">Repaso HTML</a></li>
+    </ul>
+
+    <!-- Contenido de contenidos.html -->
+     <h2>Contacto</h2>
+     <form>
+        <p>
+            <label for="nombre">Nombre</label> <br/>
+            <input type="text" name="nombre"/>
+        </p>
+        <p>
+            <label for="biografia">Biografia</label><br/>
+            <textarea name="biografia"></textarea>
+        </p>
+        <p>
+            <label for="edad">Edad</label><br/>
+            <select name="edad">
+                <option value="Menor">Menor de edad</option>
+                <option value="Adulto">Adulto</option>
+                <option value="Mayor">Mayor de 65</option>
+            </select>
+        </p>
+        <input type="submit" value="Enviar email"/>
+     </form>
+
+</body>
+</html>
