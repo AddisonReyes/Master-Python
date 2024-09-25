@@ -1,0 +1,3 @@
+django-admin startproject AprendiendoDjango
+py manage.py migrate
+py manage.py runserver
