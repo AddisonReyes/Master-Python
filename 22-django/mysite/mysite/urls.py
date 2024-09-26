@@ -1,5 +1,5 @@
 """
-URL configuration for AprendiendoDjango project.
+URL configuration for mysite project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -16,14 +16,9 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from miapp import views
+from django.urls import include, path
 
 urlpatterns = [
+    path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
-    path("", views.index, name="index"),
-    path("inicio/", views.index, name="index"),
-    path("pagina-pruebas/", views.pagina, name="pagina"),
-    path("hola-mundo/", views.hola_mundo, name="hola_mundo"),
-    path("contacto/<str:nombre>", views.contacto, name="contacto"),
 ]
