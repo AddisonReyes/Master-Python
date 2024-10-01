@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse, render
+from django.shortcuts import HttpResponse, redirect, render
 
 # Create your views here.
 # MVC = Modelo Vista Controlador -> Acciones (Metodos)
@@ -28,9 +28,7 @@ layout = """
 def index(request):
 
     html = """
-        <h1>Inicio</h1>
-        <p>Años hasta el 2050</p>
-        <ul>
+        
     """
 
     year = 2021
@@ -41,33 +39,27 @@ def index(request):
 
     html += "</ul>"
 
+    return render(request, "index.html")
     return HttpResponse(layout + html)
 
 
 def hola_mundo(request):
-    return HttpResponse(
-        layout
-        + """
-        <h1>Hola mundo con Django!!</h1>
-        <h3>Soy Addison Reyes</h3>
-        """
-    )
+    return render(request, "hola_mundo.html")
 
 
-def pagina(request):
-    return HttpResponse(
-        layout
-        + """
-        <h1>Pagina de mi web</h1>
-        <p>Creado por Addison Reyes</p>
-        """
-    )
+def pagina(request, redirigir: int = 0):
+    if redirigir == 1:
+        return redirect("contacto", nombre="Victor", apellidos="Robles")
+
+    return render(request, "pagina.html")
 
 
-def contacto(request, nombre):
-    return HttpResponse(
-        layout
-        + f"""
-        <h2>Contacto {nombre}</h2>
-        """
-    )
+def contacto(request, nombre: str = "", apellidos: str = ""):
+    html = ""
+
+    if nombre and apellidos:
+        html += f"<p>El nombre completo es: <h3>{nombre} {apellidos}</h3></p>"
+    elif nombre:
+        html += f"<p>El nombre completo es: <h3>{nombre} {apellidos}</h3></p>"
+
+    return HttpResponse(layout + "<h2>Contacto</h2>" + html)

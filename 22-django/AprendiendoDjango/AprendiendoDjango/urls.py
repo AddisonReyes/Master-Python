@@ -24,6 +24,9 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("inicio/", views.index, name="index"),
     path("pagina-pruebas/", views.pagina, name="pagina"),
+    path("pagina-pruebas/<int:redirigir>", views.pagina, name="pagina"),
     path("hola-mundo/", views.hola_mundo, name="hola_mundo"),
+    path("contacto/<str:nombre>/<str:apellidos>", views.contacto, name="contacto"),
     path("contacto/<str:nombre>", views.contacto, name="contacto"),
+    path("contacto/", views.contacto, name="contacto"),
 ]
