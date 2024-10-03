@@ -1,11 +1,46 @@
 {% extends 'layout.html' %}
 
-{% block title %} Inicio {% endblock %}
+
+{% block title %} {{title}} {% endblock %}
+
 
 {% block content%}
 
-<h1 class="title">Inicio</h1>
-<p>Años hasta el 2050</p>
-<ul>
+    <!-- Comentario html -->
+    {% comment 'Nota para el comentario'%} 
+        <p>Comentario Django</p> 
+        <h1> Hola </h1>
+    {% endcomment %}
 
-    {% endblock %}
+    <h1 class="title">{{title}}</h1>
+    <p>{{mi_variable}}</p>
+
+    {% if nombre and nombre == 'Addison Reyes' %}
+        <p>{{nombre}}</p>
+    {% else %}
+        <strong>El nombre no existe o no coincide</strong>
+    {% endif %}
+
+    <h3>Listado de lenguajes de programacion</h3>
+    <ul>
+        {% for lenguaje in lenguajes %}
+            <li>
+                {% comment %} {{forloop.first}} {% endcomment %}
+                {% comment %} {{forloop.last}} {% endcomment %}
+                {{forloop.counter}}
+                {% comment %} {{forloop.revcounter}} {% endcomment %}
+                {{lenguaje}} 
+            </li>
+        {% empty %}
+            <p>No hay lenguajes que mostrar</p>
+        {% endfor %}
+    </ul>
+        
+    <p>Años hasta el 2050</p>
+    <ul>
+        {% for year in years %}
+            <li>{{year}}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

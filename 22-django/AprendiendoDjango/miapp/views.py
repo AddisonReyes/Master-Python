@@ -26,21 +26,27 @@ layout = """
 
 
 def index(request):
-
-    html = """
-        
-    """
-
-    year = 2021
+    year: int = 2021
+    years: list[str] = []
     while year <= 2050:
         if year % 2 == 0:
-            html += f"<li>{str(year)}</li>"
+            years.append(str(year))
         year += 1
 
-    html += "</ul>"
+    nombre: str = "Addison Reyes"
+    lenguajes: list[str] = ["JavaScript", "Python", "PHP", "C"]
 
-    return render(request, "index.html")
-    return HttpResponse(layout + html)
+    return render(
+        request,
+        "index.html",
+        {
+            "title": "Inicio",
+            "mi_variable": "Soy un dato que esta en la vista",
+            "nombre": nombre,
+            "lenguajes": lenguajes,
+            "years": years,
+        },
+    )
 
 
 def hola_mundo(request):
